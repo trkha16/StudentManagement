@@ -13,6 +13,7 @@ public class main {
 		
 		// Nhap du lieu
 		while (true) {
+			System.out.print("Choose a number: ");
 			choose = scanner.nextLine();
 			switch(choose) {
 			case "1": // Add student

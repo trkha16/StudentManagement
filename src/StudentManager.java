@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class StudentManager {
 	public static Scanner scanner = new Scanner(System.in);
 	private List<Student> studentList = new ArrayList<Student>();
@@ -66,6 +67,12 @@ public class StudentManager {
 	
 	// Show thong tin student
 	public void show() {
+		System.out.format("%5s | ", "ID");
+		System.out.format("%20s | ", "NAME");
+        System.out.format("%5s | ", "AGE");
+        System.out.format("%20s | ", "ADDRESS");
+        System.out.format("%10s", "GPA");
+        System.out.println();
 		for (Student student: studentList) {
 			System.out.format("%5d | ", student.getId());
             System.out.format("%20s | ", student.getName());
