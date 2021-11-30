@@ -12,15 +12,10 @@ public class StudentManager {
 	// Add thong tin student vao list
 	public void add() {
 		// Nhap id name age address gpa
-		//System.out.print("Input id ");
 		int id = getId();
-		//System.out.print("Input Name ");
 		String name = inpName();
-		//System.out.print("Input Age ");
 		byte age = inpAge();
-		//System.out.print("Input Address ");
 		String address = inpAddress();
-		//System.out.print("Input GPA ");
 		float gpa = inpGPA();
 		
 		Student student = new Student(id, name, age, address, gpa);
@@ -32,9 +27,15 @@ public class StudentManager {
 	// Lay id cua student
 	public int getId() {
 		System.out.print("Input id ");
-		int id = scanner.nextInt();
-		scanner.nextLine();
-		return id;
+		while (true) {
+			try {
+				int id = Integer.parseInt(scanner.nextLine());
+				return id;
+			}
+			catch(NumberFormatException e) {
+				System.out.print("Invalid! Input ID again ");
+			}
+		}
 	}
 	
 	// Nhap name cua student
@@ -46,12 +47,22 @@ public class StudentManager {
 	// Nhap age cua student
 	private byte inpAge() {
 		System.out.print("Input Age ");
-		return scanner.nextByte();
+		while (true) {
+			try {
+				byte age = Byte.parseByte(scanner.nextLine());
+				if (age < 0) {
+					throw new NumberFormatException();
+				}
+				return age;
+			}
+			catch(NumberFormatException e) {
+				System.out.print("Invalid! Input age again ");
+			}
+		}
 	}
 	
 	// Nhap Address cua student
 	private String inpAddress() {
-		scanner.nextLine();
 		System.out.print("Input Address ");
 		return scanner.nextLine();
 	}
@@ -59,7 +70,18 @@ public class StudentManager {
 	// Nhap GPA cua student
 	private float inpGPA() {
 		System.out.print("Input GPA ");
-		return scanner.nextFloat();
+		while (true) {
+			try {
+				float gpa = Float.parseFloat(scanner.nextLine());
+				if (gpa < 0 || gpa > 10) {
+					throw new NumberFormatException();
+				}
+				return gpa;
+			}
+			catch(NumberFormatException e) {
+				System.out.print("Invalid! Input gpa again ");
+			}
+		}
 	}
 	
 	// Edit thong tin student by id
