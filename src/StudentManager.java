@@ -12,18 +12,16 @@ public class StudentManager {
 	// Add thong tin student vao list
 	public void add() {
 		// Nhap id name age address gpa
-		System.out.print("Input id ");
+		//System.out.print("Input id ");
 		int id = getId();
-		scanner.nextLine();
-		System.out.print("Input Name ");
-		String name = scanner.nextLine();
-		System.out.print("Input Age ");
-		byte age = scanner.nextByte();
-		scanner.nextLine();
-		System.out.print("Input Address ");
-		String address = scanner.nextLine();
-		System.out.print("Input GPA ");
-		float gpa = scanner.nextFloat();
+		//System.out.print("Input Name ");
+		String name = inpName();
+		//System.out.print("Input Age ");
+		byte age = inpAge();
+		//System.out.print("Input Address ");
+		String address = inpAddress();
+		//System.out.print("Input GPA ");
+		float gpa = inpGPA();
 		
 		Student student = new Student(id, name, age, address, gpa);
 		
@@ -33,8 +31,57 @@ public class StudentManager {
 	
 	// Lay id cua student
 	public int getId() {
+		System.out.print("Input id ");
 		int id = scanner.nextInt();
+		scanner.nextLine();
 		return id;
+	}
+	
+	// Nhap name cua student
+	private String inpName() {
+		System.out.print("Input Name ");
+		return scanner.nextLine();
+	}
+	
+	// Nhap age cua student
+	private byte inpAge() {
+		System.out.print("Input Age ");
+		return scanner.nextByte();
+	}
+	
+	// Nhap Address cua student
+	private String inpAddress() {
+		scanner.nextLine();
+		System.out.print("Input Address ");
+		return scanner.nextLine();
+	}
+	
+	// Nhap GPA cua student
+	private float inpGPA() {
+		System.out.print("Input GPA ");
+		return scanner.nextFloat();
+	}
+	
+	// Edit thong tin student by id
+	public void edit(int id) {
+		boolean isExit = false;
+		for (int i = 0; i < studentList.size(); i++) {
+			if (studentList.get(i).getId() == id) {
+				isExit = true;
+				studentList.get(i).setName(inpName()); // Edit name
+				studentList.get(i).setAge(inpAge()); // Edit age
+				studentList.get(i).setAddress(inpAddress()); // Edit Address
+				studentList.get(i).setGPA(inpGPA()); // Edit GPA
+				break;
+			}
+		}
+		
+		if (isExit == false) {
+			System.out.println("Id " + id + " not existed!");
+		}
+		else {
+			System.out.println("Student has changed!");
+		}
 	}
 	
 	// Xoa thong tin student theo id

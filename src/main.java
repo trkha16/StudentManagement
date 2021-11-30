@@ -20,6 +20,7 @@ public class main {
 				studentManager.add();
 				break;
 			case "2": // Edit student by id
+				studentManager.edit(studentManager.getId());
 				break;
 			case "3": // Delete student by id
 				studentManager.delete(studentManager.getId());
